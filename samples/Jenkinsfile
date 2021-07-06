@@ -1,0 +1,13 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Application Compatibility') {
+      stages {
+        stage ('Build base OS') {
+          steps {
+            echo "Build base OS"
+          }
+      }
+    }
+}

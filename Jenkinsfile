@@ -1,34 +1,71 @@
 pipeline {
   agent any
   stages {
-    stage('1') {
+    stage('Application Compatibility') {
       parallel {
-        stage('1') {
+        stage('Build base OS') {
           steps {
-            echo '1'
+            echo 'Provision Instance (Azure Plugin)'
+            echo 'Build Image'
           }
         }
 
-        stage('2') {
+        stage('Install Applications') {
           steps {
-            echo '2'
+            echo 'Install Packages = Apps (Login AM Plugin)'
           }
         }
 
       }
     }
 
-    stage('3') {
+    stage('Performance Optimizations') {
       parallel {
-        stage('3') {
+        stage('Performance Optimizations') {
           steps {
-            echo '3'
+            echo 'Install Packagess = Reg Configs (Login AM Plugin)'
+            echo 'Seal Image'
+            echo 'Publish Image Artifact'
           }
         }
 
-        stage('4') {
+        stage('Acceptance Test') {
           steps {
-            echo '4'
+            echo 'Deploy Image from published template'
+            echo 'Run Application Group Acceptance Test = Apps (Login Enterprisese Plugin)'
+          }
+        }
+
+      }
+    }
+
+    stage('Application and Infrastructure Load (Performance Testing)') {
+      parallel {
+        stage('Scale up') {
+          steps {
+            echo 'Deploy Image from published template'
+        }
+
+        stage('Load Test') {
+          steps {
+            echo 'Run Application Group Load Test = Apps (Login Enterprisese Plugin)'
+          }
+        }
+
+      }
+    }
+
+    stage('Performance and Availability (Continuous Testing)') {
+      parallel {
+        stage('Roll out') {
+          steps {
+            echo 'Deploy Image from published template'
+          }
+        }
+
+        stage('Continuous Test') {
+          steps {
+            echo 'Run Application Group Continuous Test = Apps (Login Enterprisese Plugin)'
           }
         }
 
