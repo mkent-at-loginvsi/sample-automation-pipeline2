@@ -15,7 +15,6 @@ pipeline {
             echo 'Install Packages = Apps (Login AM Plugin)'
           }
         }
-
       }
     }
 
@@ -35,7 +34,6 @@ pipeline {
             echo 'Run Application Group Acceptance Test = Apps (Login Enterprisese Plugin)'
           }
         }
-
       }
     }
 
@@ -44,6 +42,7 @@ pipeline {
         stage('Scale up') {
           steps {
             echo 'Deploy Image from published template'
+          }
         }
 
         stage('Load Test') {
@@ -51,7 +50,6 @@ pipeline {
             echo 'Run Application Group Load Test = Apps (Login Enterprisese Plugin)'
           }
         }
-
       }
     }
 
@@ -68,9 +66,7 @@ pipeline {
             echo 'Run Application Group Continuous Test = Apps (Login Enterprisese Plugin)'
           }
         }
-
       }
     }
-
   }
 }
